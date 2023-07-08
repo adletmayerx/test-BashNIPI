@@ -1,12 +1,10 @@
 <script setup lang="ts">
-import DownArrowIcon from "./icons/DownArrowIcon.vue";
-import DetailsBlock from "./DetailsBlock.vue";
+import { DownArrowIcon, CheckIcon } from "./icons";
+import Details from "./Details.vue";
+import User from "../types/User";
 
 type Props = {
-  name: string;
-  email: string;
-  phone: string;
-  website: string;
+  user: User;
 };
 
 defineProps<Props>();
@@ -19,26 +17,24 @@ defineProps<Props>();
     </button>
     <ul class="flex justify-between text-grey text-sm grow ml-5 gap-8">
       <li>
-        <p>{{ name }}</p>
+        <p>{{ user.name }}</p>
       </li>
       <li>
-        <p>{{ email }}</p>
+        <p>{{ user.email }}</p>
       </li>
       <li>
-        <p>{{ phone }}</p>
+        <p>{{ user.phone }}</p>
       </li>
       <li>
-        <p>{{ website }}</p>
+        <p>{{ user.website }}</p>
       </li>
     </ul>
     <div class="grow shrink"></div>
   </div>
-  <DetailsBlock>
-    <fieldset>
-      <label>
-        <span>{{name}}</span>
-        <input type="text" :value="name" />
-      </label>
-    </fieldset>
-  </DetailsBlock>
+  <div class="flex gap-5 px-10 mt-3 items-start">
+    <Details :user="user"></Details>
+    <button type="button">
+      <CheckIcon />
+    </button>
+  </div>
 </template>
