@@ -2,6 +2,8 @@
 import AccordionItem from "./AccordionItem.vue";
 import User from "../types/User";
 
+const HEADINGS = ['Name', "Email", 'Phone', 'Website']
+
 type Props = {
   users: Array<User>;
 };
@@ -11,27 +13,15 @@ defineProps<Props>();
 
 <template>
   <div class="py-8 px-14">
-    <div class="p-3 pl-10 flex">
-      <ul class="flex justify-between text-grey text-sm grow ml-5 gap-8">
-        <li>
-          <p> Name </p>
-        </li>
-        <li>
-          <p> Email </p>
-        </li>
-        <li>
-          <p> Phone </p>
-        </li>
-        <li>
-          <p> Website </p>
-        </li>
-      </ul>
-      <div class="grow shrink"></div>
-    </div>
-    <ul class="flex flex-col gap-3 ">
-      <li v-for="user in users" :key="user.id">
-        <AccordionItem :user="user" />
-      </li>
-    </ul>
+    <table class="w-full border-separate border-spacing-0 text-grey ">
+      <thead class="text-sm">
+        <th class="w-10"></th>
+        <th v-for="heading in HEADINGS" :key="heading" class="text-left"> {{ heading }} </th>
+        <th class="w-10"></th>
+      </thead>
+      <tbody>
+        <AccordionItem :key="users[0].id" :user="users[0]" />
+      </tbody>
+    </table>
   </div>
 </template>

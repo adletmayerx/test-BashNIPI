@@ -11,30 +11,26 @@ defineProps<Props>();
 </script>
 
 <template>
-  <div class="border rounded border-yellow p-3 flex">
-    <button type="button">
-      <DownArrowIcon />
-    </button>
-    <ul class="flex justify-between text-grey text-sm grow ml-5 gap-8">
-      <li>
-        <p>{{ user.name }}</p>
-      </li>
-      <li>
-        <p>{{ user.email }}</p>
-      </li>
-      <li>
-        <p>{{ user.phone }}</p>
-      </li>
-      <li>
-        <p>{{ user.website }}</p>
-      </li>
-    </ul>
-    <div class="grow shrink"></div>
-  </div>
-  <div class="flex gap-5 px-10 mt-3 items-start">
-    <Details :user="user"></Details>
-    <button type="button">
-      <CheckIcon />
-    </button>
-  </div>
+  <tr>
+    <td class="p-4 rounded-l border border-r-0 border-yellow">
+      <button type="button">
+        <DownArrowIcon />
+      </button>
+    </td>
+    <td class="border-t border-b border-yellow">{{ user.name }}</td>
+    <td class="border-t border-b border-yellow">{{ user.email }}</td>
+    <td class="border-t border-b border-yellow">{{ user.phone }}</td>
+    <td class="border-t border-b border-yellow">{{ user.website }}</td>
+    <td class="border border-l-0 rounded-r border-yellow"></td>
+  </tr>
+  <tr class="">
+    <td colspan="6">
+      <div class="flex items-start py-3 px-9 gap-3">
+        <Details :user="user"></Details>
+        <button type="button">
+          <CheckIcon />
+        </button>
+      </div>
+    </td>
+  </tr>
 </template>
