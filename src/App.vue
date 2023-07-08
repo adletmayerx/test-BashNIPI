@@ -1,6 +1,7 @@
 <script setup lang="ts">
 // import HelloWorld from './components/HelloWorld.vue'
 import Header from "./components/Header.vue";
+import Accordion from "./components/Accordion.vue";
 </script>
 
 <template>
@@ -14,6 +15,7 @@ import Header from "./components/Header.vue";
   </div>
   <HelloWorld msg="Vite + Vue" /> -->
   <Header />
+  <Accordion />
 </template>
 
 <style scoped>
