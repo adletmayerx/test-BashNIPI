@@ -53,7 +53,7 @@ const handleSaveButtonClick = () => {
   >
     <tr v-if="isDetailsVisible" class="bg-white relative">
       <td colspan="6">
-        <div class="flex items-start py-3 px-9 gap-3">
+        <div class="flex items-start py-1 px-9 gap-3">
           <Details :user="user" :newUserData="newUserData" :changedUserData="changedUserData"></Details>
           <button type="button" @click="handleSaveButtonClick">
             <CheckIcon />

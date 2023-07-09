@@ -20,7 +20,7 @@ const onEditUser = (newUserData: User) => {
 
 <template>
   <div class="py-8 px-14">
-    <table class="w-full border-separate border-spacing-0 text-grey overflow-hidden">
+    <table class="w-full border-separate border-spacing-y-2 text-grey overflow-hidden">
       <thead class="text-xs text-grey bg-white relative z-10">
         <th class="w-10"></th>
         <th v-for="heading in HEADINGS" :key="heading" class="text-left opacity-50 font-normal py-2">{{ heading }}</th>
