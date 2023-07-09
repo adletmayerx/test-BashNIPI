@@ -15,6 +15,7 @@ const emit = defineEmits<{
 }>();
 
 const isDetailsVisible = ref(false);
+const isSaveButtonDisabled = ref(true);
 const newUserData: User = JSON.parse(JSON.stringify(user));
 let changedUserData: any = {};
 
@@ -28,6 +29,12 @@ const handleSaveButtonClick = () => {
   changedUserData = {};
 
   emit("edituser", newUserData);
+
+  isSaveButtonDisabled.value = true;
+};
+
+const onInputChange = () => {
+  isSaveButtonDisabled.value = false;
 };
 </script>
 
@@ -59,9 +66,14 @@ const handleSaveButtonClick = () => {
     <tr v-if="isDetailsVisible" class="bg-white relative">
       <td colspan="6">
         <div class="flex items-start py-1 px-9 gap-3">
-          <Details :user="user" :newUserData="newUserData" :changedUserData="changedUserData"></Details>
-          <button type="button" @click="handleSaveButtonClick">
-            <CheckIcon />
+          <Details
+            :user="user"
+            :newUserData="newUserData"
+            :changedUserData="changedUserData"
+            @inputchange="onInputChange"
+          ></Details>
+          <button type="button" @click="handleSaveButtonClick" :disabled="isSaveButtonDisabled">
+            <CheckIcon :isDisabled="isSaveButtonDisabled" />
           </button>
         </div>
       </td>

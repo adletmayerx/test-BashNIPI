@@ -6,6 +6,9 @@ import { type InputChangeParams } from "./shared/LabelVue.vue";
 type Props = { user: User; newUserData: User; changedUserData: any };
 
 const { user, newUserData, changedUserData } = defineProps<Props>();
+const emit = defineEmits<{
+  (e: "inputchange"): void;
+}>();
 
 const onInputChange = ({ name, value, block }: InputChangeParams) => {
   switch (block) {
@@ -33,6 +36,8 @@ const onInputChange = ({ name, value, block }: InputChangeParams) => {
 
       break;
   }
+
+  emit("inputchange");
 };
 </script>
 
