@@ -76,10 +76,10 @@ const handleSaveButtonClick = () => {
         <DownArrowIcon />
       </button>
     </td>
-    <td class="border-t border-b border-yellow">{{ user.name }}</td>
-    <td class="border-t border-b border-yellow">{{ user.email }}</td>
-    <td class="border-t border-b border-yellow">{{ user.phone }}</td>
-    <td class="border-t border-b border-yellow">{{ user.website }}</td>
+    <td class="border-t border-b border-yellow text-ellipsis overflow-hidden max-w-[100px] px-3">{{ user.name }}</td>
+    <td class="border-t border-b border-yellow text-ellipsis overflow-hidden max-w-[100px] px-3">{{ user.email }}</td>
+    <td class="border-t border-b border-yellow text-ellipsis overflow-hidden max-w-[100px] px-3">{{ user.phone }}</td>
+    <td class="border-t border-b border-yellow text-ellipsis overflow-hidden max-w-[100px] px-3">{{ user.website }}</td>
     <td class="border border-l-0 rounded-r border-yellow"></td>
   </tr>
   <Transition

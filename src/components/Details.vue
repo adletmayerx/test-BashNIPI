@@ -21,17 +21,17 @@ const handleInputChange = ({ block, name, value }: InputChangeParams) => {
   <div class="flex flex-col text-grey grow">
     <div class="grid grid-cols-3 border rounded-t">
       <BlockTitle title="address" />
-      <BlockTitle title="company" className="border-x border-light-grey" />
-      <BlockTitle title="basic info" />
+      <BlockTitle title="company" className="border-l border-light-grey" />
+      <BlockTitle title="basic info" className="border-l border-light-grey" />
     </div>
-    <div class="grid grid-cols-3 border border-light-grey rounded-b">
-      <fieldset class="flex flex-col gap-3 py-5 px-8">
+    <div class="grid grid-cols-3 border border-light-grey rounded-b overflow-hidden">
+      <fieldset class="flex flex-col gap-3 py-5 px-8 overflow-hidden bg-white">
         <LabelVue block="address" name="street" :value="user.address.street" @inputchange="handleInputChange" />
         <LabelVue block="address" name="suite" :value="user.address.suite" @inputchange="handleInputChange" />
         <LabelVue block="address" name="city" :value="user.address.city" @inputchange="handleInputChange" />
         <LabelVue block="address" name="zipcode" :value="user.address.zipcode" @inputchange="handleInputChange" />
       </fieldset>
-      <fieldset class="flex flex-col gap-3 py-5 px-8 border-x border-light-grey">
+      <fieldset class="flex flex-col gap-3 py-5 px-8 border-l border-light-grey overflow-hidden bg-white">
         <LabelVue block="company" name="name" :value="user.company.name" @inputchange="handleInputChange" />
         <LabelVue
           block="company"
@@ -41,7 +41,7 @@ const handleInputChange = ({ block, name, value }: InputChangeParams) => {
         />
         <LabelVue block="company" name="bs" :value="user.company.bs" @inputchange="handleInputChange" />
       </fieldset>
-      <fieldset class="flex flex-col gap-3 py-5 px-8">
+      <fieldset class="flex flex-col gap-3 py-5 px-8 border-l border-light-grey overflow-hidden bg-white">
         <LabelVue :block="null" name="name" :value="user.name" @inputchange="handleInputChange" />
         <LabelVue :block="null" name="username" :value="user.username" @inputchange="handleInputChange" />
         <LabelVue :block="null" name="email" :value="user.email" @inputchange="handleInputChange" />
