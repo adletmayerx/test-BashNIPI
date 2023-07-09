@@ -3,6 +3,7 @@ import { DownArrowIcon, CheckIcon } from "./icons";
 import Details from "./Details.vue";
 import User from "../types/User";
 import { ref } from "vue";
+import clsx from "clsx";
 
 type Props = {
   user: User;
@@ -17,7 +18,7 @@ const isDetailsVisible = ref(false);
 const newUserData: User = JSON.parse(JSON.stringify(user));
 let changedUserData: any = {};
 
-const handleDownArrowButtonClick = () => {
+const handleToggleDetailsButtonClick = () => {
   isDetailsVisible.value = !isDetailsVisible.value;
 };
 
@@ -33,7 +34,11 @@ const handleSaveButtonClick = () => {
 <template>
   <tr class="text-sm bg-white z-10 relative">
     <td class="p-2 rounded-l border border-r-0 border-yellow">
-      <button type="button" @click="handleDownArrowButtonClick">
+      <button
+        type="button"
+        @click="handleToggleDetailsButtonClick"
+        :class="clsx('transition-transform duration-300', [isDetailsVisible && '-scale-y-100'])"
+      >
         <DownArrowIcon />
       </button>
     </td>
