@@ -17,7 +17,7 @@ defineProps<Props>();
     </div>
     <div class="grid grid-cols-3 border border-light-grey rounded-b">
       <fieldset class="flex flex-col gap-3 py-5 px-8">
-        <LabelVue name="Street" :value="user.address.street" />
+        <LabelVue name="Street" :value="user.address.street" @inputChange="(name, value) => console.log(name, value)" />
         <LabelVue name="Suite" :value="user.address.suite" />
         <LabelVue name="City" :value="user.address.city" />
         <LabelVue name="Zipcode" :value="user.address.zipcode" />
