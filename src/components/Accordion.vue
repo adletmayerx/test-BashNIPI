@@ -16,7 +16,6 @@ const { users } = defineProps<Props>();
 const onEditUser = (newUserData: User) => {
   emit("edituser", newUserData)
 }
-
 </script>
 
 <template>
