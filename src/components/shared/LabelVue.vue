@@ -19,14 +19,14 @@ export type InputChangeParams = InputChangeParamsBasic | InputChangeParamsCompan
 const { block, name, value } = defineProps<InputChangeParams>();
 
 const emit = defineEmits<{
-  (e: "inputChange", params: InputChangeParams): void;
+  (e: "inputchange", params: InputChangeParams): void;
 }>();
 
 const handleInputChange = (e: Event) => {
   const input = e.target as HTMLInputElement;
   const params: InputChangeParams = { block, name, value: input.value } as InputChangeParams;
 
-  emit("inputChange", params);
+  emit("inputchange", params);
 };
 </script>
 
