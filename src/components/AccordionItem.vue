@@ -8,14 +8,22 @@ type Props = {
   user: User;
 };
 
-defineProps<Props>();
+const { user } = defineProps<Props>();
 
-const isDetailsVisible = ref(false)
+const isDetailsVisible = ref(false);
+const newUserData: Partial<User> = {};
 
 const handleDownArrowButtonClick = () => {
   isDetailsVisible.value = !isDetailsVisible.value;
-}
+};
 
+const handleSaveButtonClick = () => {
+  alert(JSON.stringify(newUserData));
+
+  for (let key in newUserData) {
+    user[key] = newUserData[key];
+  }
+};
 </script>
 
 <template>
@@ -31,14 +39,19 @@ const handleDownArrowButtonClick = () => {
     <td class="border-t border-b border-yellow">{{ user.website }}</td>
     <td class="border border-l-0 rounded-r border-yellow"></td>
   </tr>
-  <Transition enter-active-class="duration-300 ease-out" enter-from-class="transform opacity-0 translate-x-full"
-    enter-to-class="opacity-100 translate-x-0" leave-active-class="duration-200 ease-in" leave-from-class="opacity-100 translate-x-0"
-    leave-to-class="transform opacity-0 translate-x-full">
+  <Transition
+    enter-active-class="duration-300 ease-out"
+    enter-from-class="transform opacity-0 translate-x-full"
+    enter-to-class="opacity-100 translate-x-0"
+    leave-active-class="duration-200 ease-in"
+    leave-from-class="opacity-100 translate-x-0"
+    leave-to-class="transform opacity-0 translate-x-full"
+  >
     <tr v-if="isDetailsVisible" class="bg-white relative">
       <td colspan="6">
         <div class="flex items-start py-3 px-9 gap-3">
-          <Details :user="user"></Details>
-          <button type="button">
+          <Details :user="user" :newUserData="newUserData"></Details>
+          <button type="button" @click="handleSaveButtonClick">
             <CheckIcon />
           </button>
         </div>
