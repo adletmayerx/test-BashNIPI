@@ -7,11 +7,16 @@ import type User from "./types/User";
 const users = ref<Array<any>>([]);
 
 const onEditUser = (user: User) => {
-  for (let [i, _user] of users.value.entries()) {
+  for (let _user of users.value) {
     if (user.id !== _user.id) {
       continue;
     }
-    users.value.splice(i, 1, user);
+
+    let key: keyof typeof user;
+
+    for (key in user) {
+      _user[key] = user[key];
+    }
 
     break;
   }

@@ -5,39 +5,15 @@ import { type InputChangeParams } from "./shared/LabelVue.vue";
 
 type Props = { user: User; newUserData: User; changedUserData: any };
 
-const { user, newUserData, changedUserData } = defineProps<Props>();
+const { user } = defineProps<Props>();
 const emit = defineEmits<{
-  (e: "inputchange"): void;
+  (e: "inputchange", params: InputChangeParams): void;
 }>();
 
-const onInputChange = ({ name, value, block }: InputChangeParams) => {
-  switch (block) {
-    case "address":
-      if (!changedUserData[block]) {
-        changedUserData[block] = {};
-      }
+const handleInputChange = ({ block, name, value }: InputChangeParams) => {
+  const params: InputChangeParams = { block, name, value } as InputChangeParams;
 
-      newUserData[block][name] = value;
-      changedUserData[block][name] = value;
-
-      break;
-    case "company":
-      if (!changedUserData[block]) {
-        changedUserData[block] = {};
-      }
-
-      newUserData[block][name] = value;
-      changedUserData[block][name] = value;
-
-      break;
-    default:
-      newUserData[name] = value;
-      changedUserData[name] = value;
-
-      break;
-  }
-
-  emit("inputchange");
+  emit("inputchange", params);
 };
 </script>
 
@@ -50,22 +26,27 @@ const onInputChange = ({ name, value, block }: InputChangeParams) => {
     </div>
     <div class="grid grid-cols-3 border border-light-grey rounded-b">
       <fieldset class="flex flex-col gap-3 py-5 px-8">
-        <LabelVue block="address" name="street" :value="user.address.street" @inputchange="onInputChange" />
-        <LabelVue block="address" name="suite" :value="user.address.suite" @inputchange="onInputChange" />
-        <LabelVue block="address" name="city" :value="user.address.city" @inputchange="onInputChange" />
-        <LabelVue block="address" name="zipcode" :value="user.address.zipcode" @inputchange="onInputChange" />
+        <LabelVue block="address" name="street" :value="user.address.street" @inputchange="handleInputChange" />
+        <LabelVue block="address" name="suite" :value="user.address.suite" @inputchange="handleInputChange" />
+        <LabelVue block="address" name="city" :value="user.address.city" @inputchange="handleInputChange" />
+        <LabelVue block="address" name="zipcode" :value="user.address.zipcode" @inputchange="handleInputChange" />
       </fieldset>
       <fieldset class="flex flex-col gap-3 py-5 px-8 border-x border-light-grey">
-        <LabelVue block="company" name="name" :value="user.company.name" @inputchange="onInputChange" />
-        <LabelVue block="company" name="catchPhrase" :value="user.company.catchPhrase" @inputchange="onInputChange" />
-        <LabelVue block="company" name="bs" :value="user.company.bs" @inputchange="onInputChange" />
+        <LabelVue block="company" name="name" :value="user.company.name" @inputchange="handleInputChange" />
+        <LabelVue
+          block="company"
+          name="catchPhrase"
+          :value="user.company.catchPhrase"
+          @inputchange="handleInputChange"
+        />
+        <LabelVue block="company" name="bs" :value="user.company.bs" @inputchange="handleInputChange" />
       </fieldset>
       <fieldset class="flex flex-col gap-3 py-5 px-8">
-        <LabelVue :block="null" name="name" :value="user.name" @inputchange="onInputChange" />
-        <LabelVue :block="null" name="username" :value="user.username" @inputchange="onInputChange" />
-        <LabelVue :block="null" name="email" :value="user.email" @inputchange="onInputChange" />
-        <LabelVue :block="null" name="phone" :value="user.phone" @inputchange="onInputChange" />
-        <LabelVue :block="null" name="website" :value="user.website" @inputchange="onInputChange" />
+        <LabelVue :block="null" name="name" :value="user.name" @inputchange="handleInputChange" />
+        <LabelVue :block="null" name="username" :value="user.username" @inputchange="handleInputChange" />
+        <LabelVue :block="null" name="email" :value="user.email" @inputchange="handleInputChange" />
+        <LabelVue :block="null" name="phone" :value="user.phone" @inputchange="handleInputChange" />
+        <LabelVue :block="null" name="website" :value="user.website" @inputchange="handleInputChange" />
       </fieldset>
     </div>
   </div>

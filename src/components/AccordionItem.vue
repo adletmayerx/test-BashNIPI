@@ -4,6 +4,7 @@ import Details from "./Details.vue";
 import User from "../types/User";
 import { ref } from "vue";
 import clsx from "clsx";
+import { InputChangeParams } from "./shared/LabelVue.vue";
 
 type Props = {
   user: User;
@@ -23,6 +24,36 @@ const handleToggleDetailsButtonClick = () => {
   isDetailsVisible.value = !isDetailsVisible.value;
 };
 
+const onInputChange = ({ name, value, block }: InputChangeParams) => {
+  switch (block) {
+    case "address":
+      if (!changedUserData[block]) {
+        changedUserData[block] = {};
+      }
+
+      newUserData[block][name] = value;
+      changedUserData[block][name] = value;
+
+      break;
+    case "company":
+      if (!changedUserData[block]) {
+        changedUserData[block] = {};
+      }
+
+      newUserData[block][name] = value;
+      changedUserData[block][name] = value;
+
+      break;
+    default:
+      newUserData[name] = value;
+      changedUserData[name] = value;
+
+      break;
+  }
+
+  isSaveButtonDisabled.value = false;
+};
+
 const handleSaveButtonClick = () => {
   alert(JSON.stringify(changedUserData));
 
@@ -31,10 +62,6 @@ const handleSaveButtonClick = () => {
   emit("edituser", newUserData);
 
   isSaveButtonDisabled.value = true;
-};
-
-const onInputChange = () => {
-  isSaveButtonDisabled.value = false;
 };
 </script>
 

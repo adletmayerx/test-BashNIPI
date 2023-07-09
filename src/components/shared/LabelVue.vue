@@ -9,7 +9,7 @@ type InputChangeParamsAddress = {
   name: "street" | "suite" | "city" | "zipcode";
   value: string;
 };
-type InputChangeParamsCompany = {
+export type InputChangeParamsCompany = {
   block: "company";
   name: "name" | "catchPhrase" | "bs";
   value: string;
@@ -38,7 +38,7 @@ const handleInputChange = (e: Event) => {
       type="text"
       class="border rounded py-2 px-4 text-sm border-light-grey"
       :value="value"
-      @change="handleInputChange"
+      @input="handleInputChange"
     />
   </label>
 </template>
