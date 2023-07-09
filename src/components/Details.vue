@@ -1,11 +1,38 @@
 <script setup lang="ts">
 import { LabelVue, BlockTitle } from "./shared";
 import User from "../types/User";
+import { type InputChangeParams } from "./shared/LabelVue.vue";
 
-type Props = { user: User };
+type Props = { user: User; newUserData: any };
 
-defineProps<Props>();
+const { user, newUserData } = defineProps<Props>();
 
+const onInputChange = ({ name, value, block }: InputChangeParams) => {
+  switch (block) {
+    case "address":
+      if (!newUserData[block]) {
+        newUserData[block] = {};
+      }
+
+      newUserData[block][name] = value;
+
+      break;
+    case "company":
+      if (!newUserData[block]) {
+        newUserData[block] = {};
+      }
+
+      newUserData[block][name] = value;
+
+      break;
+    default:
+      newUserData[name] = value;
+
+      break;
+  }
+
+  console.log(newUserData);
+};
 </script>
 
 <template>
@@ -17,22 +44,22 @@ defineProps<Props>();
     </div>
     <div class="grid grid-cols-3 border border-light-grey rounded-b">
       <fieldset class="flex flex-col gap-3 py-5 px-8">
-        <LabelVue name="Street" :value="user.address.street" @inputChange="(name, value) => console.log(name, value)" />
-        <LabelVue name="Suite" :value="user.address.suite" />
-        <LabelVue name="City" :value="user.address.city" />
-        <LabelVue name="Zipcode" :value="user.address.zipcode" />
+        <LabelVue block="address" name="street" :value="user.address.street" @inputChange="onInputChange" />
+        <LabelVue block="address" name="suite" :value="user.address.suite" @inputChange="onInputChange" />
+        <LabelVue block="address" name="city" :value="user.address.city" @inputChange="onInputChange" />
+        <LabelVue block="address" name="zipcode" :value="user.address.zipcode" @inputChange="onInputChange" />
       </fieldset>
       <fieldset class="flex flex-col gap-3 py-5 px-8 border-x border-light-grey">
-        <LabelVue name="Name" :value="user.company.name" />
-        <LabelVue name="CatchPhrase" :value="user.company.catchPhrase" />
-        <LabelVue name="Bs" :value="user.company.bs" />
+        <LabelVue block="company" name="name" :value="user.company.name" @inputChange="onInputChange" />
+        <LabelVue block="company" name="catchPhrase" :value="user.company.catchPhrase" @inputChange="onInputChange" />
+        <LabelVue block="company" name="bs" :value="user.company.bs" @inputChange="onInputChange" />
       </fieldset>
       <fieldset class="flex flex-col gap-3 py-5 px-8">
-        <LabelVue name="Name" :value="user.name" />
-        <LabelVue name="Username" :value="user.username" />
-        <LabelVue name="Email" :value="user.email" />
-        <LabelVue name="Phone" :value="user.phone" />
-        <LabelVue name="Website" :value="user.website" />
+        <LabelVue :block="null" name="name" :value="user.name" @inputChange="onInputChange" />
+        <LabelVue :block="null" name="username" :value="user.username" @inputChange="onInputChange" />
+        <LabelVue :block="null" name="email" :value="user.email" @inputChange="onInputChange" />
+        <LabelVue :block="null" name="phone" :value="user.phone" @inputChange="onInputChange" />
+        <LabelVue :block="null" name="website" :value="user.website" @inputChange="onInputChange" />
       </fieldset>
     </div>
   </div>
