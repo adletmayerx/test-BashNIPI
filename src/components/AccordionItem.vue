@@ -9,20 +9,24 @@ type Props = {
 };
 
 const { user } = defineProps<Props>();
+const emit = defineEmits<{
+  (e: "edituser", newUserData: User): void;
+}>();
 
 const isDetailsVisible = ref(false);
-const newUserData: Partial<User> = {};
+const newUserData: User = JSON.parse(JSON.stringify(user));
+let changedUserData: any = {};
 
 const handleDownArrowButtonClick = () => {
   isDetailsVisible.value = !isDetailsVisible.value;
 };
 
 const handleSaveButtonClick = () => {
-  alert(JSON.stringify(newUserData));
+  alert(JSON.stringify(changedUserData));
 
-  for (let key in newUserData) {
-    user[key] = newUserData[key];
-  }
+  changedUserData = {};
+
+  emit("edituser", newUserData);
 };
 </script>
 
@@ -50,7 +54,7 @@ const handleSaveButtonClick = () => {
     <tr v-if="isDetailsVisible" class="bg-white relative">
       <td colspan="6">
         <div class="flex items-start py-3 px-9 gap-3">
-          <Details :user="user" :newUserData="newUserData"></Details>
+          <Details :user="user" :newUserData="newUserData" :changedUserData="changedUserData"></Details>
           <button type="button" @click="handleSaveButtonClick">
             <CheckIcon />
           </button>

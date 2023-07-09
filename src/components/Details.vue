@@ -3,35 +3,36 @@ import { LabelVue, BlockTitle } from "./shared";
 import User from "../types/User";
 import { type InputChangeParams } from "./shared/LabelVue.vue";
 
-type Props = { user: User; newUserData: any };
+type Props = { user: User; newUserData: User; changedUserData: any };
 
-const { user, newUserData } = defineProps<Props>();
+const { user, newUserData, changedUserData } = defineProps<Props>();
 
 const onInputChange = ({ name, value, block }: InputChangeParams) => {
   switch (block) {
     case "address":
-      if (!newUserData[block]) {
-        newUserData[block] = {};
+      if (!changedUserData[block]) {
+        changedUserData[block] = {};
       }
 
       newUserData[block][name] = value;
+      changedUserData[block][name] = value;
 
       break;
     case "company":
-      if (!newUserData[block]) {
-        newUserData[block] = {};
+      if (!changedUserData[block]) {
+        changedUserData[block] = {};
       }
 
       newUserData[block][name] = value;
+      changedUserData[block][name] = value;
 
       break;
     default:
       newUserData[name] = value;
+      changedUserData[name] = value;
 
       break;
   }
-
-  console.log(newUserData);
 };
 </script>
 
