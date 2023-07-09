@@ -7,21 +7,16 @@ import type User from "./types/User";
 const users = ref<Array<any>>([]);
 
 const onEditUser = (user: User) => {
-  console.log(user);
-  debugger;
   for (let [i, _user] of users.value.entries()) {
     if (user.id !== _user.id) {
       continue;
     }
-    debugger;
-    // _user = {...user};
     users.value.splice(i, 1, user);
 
     break;
   }
 
   localStorage.setItem("users", JSON.stringify(users.value));
-  console.log("users", users);
 };
 
 onBeforeMount(async () => {
