@@ -3,7 +3,7 @@ import { DownArrowIcon, CheckIcon } from "./icons";
 import Details from "./Details.vue";
 import User from "../types/User";
 import { ref } from "vue";
-import clsx from 'clsx';
+import clsx from "clsx";
 import { InputChangeParams } from "./shared/LabelVue.vue";
 
 type Props = {
@@ -70,6 +70,7 @@ const handleSaveButtonClick = () => {
     <td class="p-2 rounded-l border border-r-0 border-yellow">
       <button
         type="button"
+        :title="isDetailsVisible ? 'Скрыть подробную информацию' : 'Показать подробную информацию'"
         @click="handleToggleDetailsButtonClick"
         :class="clsx('transition-transform duration-300', [isDetailsVisible && '-scale-y-100'])"
       >
@@ -99,7 +100,7 @@ const handleSaveButtonClick = () => {
             :changedUserData="changedUserData"
             @inputchange="onInputChange"
           ></Details>
-          <button type="button" @click="handleSaveButtonClick" :disabled="isSaveButtonDisabled">
+          <button type="button" @click="handleSaveButtonClick" :disabled="isSaveButtonDisabled" title="Сохранить изменения">
             <CheckIcon :isDisabled="isSaveButtonDisabled" />
           </button>
         </div>
