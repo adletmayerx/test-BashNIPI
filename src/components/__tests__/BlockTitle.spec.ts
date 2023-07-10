@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { BlockTitle } from "../components/shared";
+import { BlockTitle } from "../shared";
 import { shallowMount } from "@vue/test-utils";
 
 describe("BlockTitle", () => {
