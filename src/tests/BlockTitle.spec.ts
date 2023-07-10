@@ -8,4 +8,10 @@ describe("BlockTitle", () => {
 
     expect(wrapper.text()).toEqual("string");
   });
+
+  it("корректное добавление класса", () => {
+    const wrapper = shallowMount(BlockTitle, { props: { title: "string", className: "text-green" } });
+
+    expect(wrapper.classes()).toContain("text-green");
+  });
 });
