@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import { DownArrowIcon, CheckIcon } from "./icons";
-import Details from "./Details.vue";
+import { DownArrowIcon } from "./icons";
+import DetailsRow from "./DetailsRow.vue";
 import User from "../types/User";
 import { ref } from "vue";
 import clsx from "clsx";
-import { InputChangeParams } from "./shared/LabelVue.vue";
 
 type Props = {
   user: User;
@@ -16,52 +15,13 @@ const emit = defineEmits<{
 }>();
 
 const isDetailsVisible = ref(false);
-const isSaveButtonDisabled = ref(true);
-const newUserData: User = JSON.parse(JSON.stringify(user));
-let changedUserData: any = {};
 
 const handleToggleDetailsButtonClick = () => {
   isDetailsVisible.value = !isDetailsVisible.value;
 };
 
-const onInputChange = ({ name, value, block }: InputChangeParams) => {
-  switch (block) {
-    case "address":
-      if (!changedUserData[block]) {
-        changedUserData[block] = {};
-      }
-
-      newUserData[block][name] = value;
-      changedUserData[block][name] = value;
-
-      break;
-    case "company":
-      if (!changedUserData[block]) {
-        changedUserData[block] = {};
-      }
-
-      newUserData[block][name] = value;
-      changedUserData[block][name] = value;
-
-      break;
-    default:
-      newUserData[name] = value;
-      changedUserData[name] = value;
-
-      break;
-  }
-
-  isSaveButtonDisabled.value = false;
-};
-
-const handleSaveButtonClick = () => {
-  alert(JSON.stringify(changedUserData));
-
-  changedUserData = {};
-
+const onEdituser = (newUserData: User) => {
   emit("edituser", newUserData);
-
-  isSaveButtonDisabled.value = true;
 };
 </script>
 
@@ -91,20 +51,6 @@ const handleSaveButtonClick = () => {
     leave-from-class="opacity-100 translate-x-0"
     leave-to-class="transform opacity-0 translate-x-full"
   >
-    <tr v-if="isDetailsVisible" class="bg-white relative">
-      <td colspan="6">
-        <form class="flex items-start py-1 px-9 gap-3" @submit.prevent="handleSaveButtonClick" >
-          <Details
-            :user="user"
-            :newUserData="newUserData"
-            :changedUserData="changedUserData"
-            @inputchange="onInputChange"
-          ></Details>
-          <button type="submit" :disabled="isSaveButtonDisabled" title="Сохранить изменения">
-            <CheckIcon :isDisabled="isSaveButtonDisabled" />
-          </button>
-        </form>
-      </td>
-    </tr>
+    <DetailsRow v-if="isDetailsVisible" :user="user" @edituser="onEdituser" />
   </Transition>
 </template>
