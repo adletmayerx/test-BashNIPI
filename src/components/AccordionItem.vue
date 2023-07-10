@@ -3,7 +3,7 @@ import { DownArrowIcon, CheckIcon } from "./icons";
 import Details from "./Details.vue";
 import User from "../types/User";
 import { ref } from "vue";
-import clsx from "clsx";
+import clsx from 'clsx';
 import { InputChangeParams } from "./shared/LabelVue.vue";
 
 type Props = {
