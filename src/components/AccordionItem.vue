@@ -93,17 +93,17 @@ const handleSaveButtonClick = () => {
   >
     <tr v-if="isDetailsVisible" class="bg-white relative">
       <td colspan="6">
-        <div class="flex items-start py-1 px-9 gap-3">
+        <form class="flex items-start py-1 px-9 gap-3" @submit.prevent="handleSaveButtonClick" >
           <Details
             :user="user"
             :newUserData="newUserData"
             :changedUserData="changedUserData"
             @inputchange="onInputChange"
           ></Details>
-          <button type="button" @click="handleSaveButtonClick" :disabled="isSaveButtonDisabled" title="Сохранить изменения">
+          <button type="submit" :disabled="isSaveButtonDisabled" title="Сохранить изменения">
             <CheckIcon :isDisabled="isSaveButtonDisabled" />
           </button>
-        </div>
+        </form>
       </td>
     </tr>
   </Transition>
