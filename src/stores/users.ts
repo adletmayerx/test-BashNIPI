@@ -19,7 +19,10 @@ export const useUsersStore = defineStore("users", () => {
         continue;
       }
 
-      for (let key in newUserData) {
+      let key: keyof User;
+
+      for (key in newUserData) {
+        //@ts-ignore
         user[key] = newUserData[key];
       }
 
@@ -27,5 +30,5 @@ export const useUsersStore = defineStore("users", () => {
     }
   };
 
-  return { users };
+  return { users, setUsers, editUser };
 });
