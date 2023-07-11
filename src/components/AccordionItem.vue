@@ -9,19 +9,12 @@ type Props = {
 };
 
 const { user } = defineProps<Props>();
-const emit = defineEmits<{
-  (e: "edituser", newUserData: User): void;
-}>();
-
 const isDetailsVisible = ref(false);
 
 const handleToggleDetailsButtonClick = () => {
   isDetailsVisible.value = !isDetailsVisible.value;
 };
 
-const onEdituser = (newUserData: User) => {
-  emit("edituser", newUserData);
-};
 </script>
 
 <template>
@@ -34,6 +27,6 @@ const onEdituser = (newUserData: User) => {
     leave-from-class="opacity-100 translate-x-0"
     leave-to-class="transform opacity-0 translate-x-full"
   >
-    <DetailsRow v-if="isDetailsVisible" :user="user" @edituser="onEdituser" />
+    <DetailsRow v-if="isDetailsVisible" :user="user" />
   </Transition>
 </template>

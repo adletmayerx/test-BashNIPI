@@ -9,13 +9,6 @@ type Props = {
 };
 
 const { users } = defineProps<Props>();
-  const emit = defineEmits<{
-  (e: "edituser", newUserData: User): void;
-}>();
-
-const onEditUser = (newUserData: User) => {
-  emit("edituser", newUserData)
-}
 </script>
 
 <template>
@@ -27,8 +20,7 @@ const onEditUser = (newUserData: User) => {
         <th class="w-10 py-3"></th>
       </thead>
       <tbody>
-        <!-- <AccordionItem :key="users[0].id" :user="users[0]" /> -->
-        <AccordionItem v-for="user in users" :key="user.id" :user="user" @edituser="onEditUser" />
+        <AccordionItem v-for="user in users" :key="user.id" :user="user" />
       </tbody>
     </table>
   </div>
