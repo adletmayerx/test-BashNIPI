@@ -1,18 +1,30 @@
-# Vue 3 + TypeScript + Vite
+# Тестовое задание на должность frontend разработчика в БашНИПИнефть
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+## Описание
+Приложение представляет собой SPA, написанное на Vue.js.
+Реализована отрисовка массива пользователей, получаемых с сайта [https://jsonplaceholder.typicode.com/users](https://jsonplaceholder.typicode.com/users), в виде аккордеона. Есть возможность раскрыть детальную информацию о каждом пользователе и отредактировать ее. Данные хранятся с помощью pinia. Для сборки использован Vite.
 
-## Recommended IDE Setup
+## Деплой
+Приложение доступно на gh-pages по [ссылке](https://adletmayerx.github.io/test-BashNIPI/)
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+## Локальная сборка
 
-## Type Support For `.vue` Imports in TS
+Для запуска приложения локально выполните в терминале следующие команды.
+Требуется установленный пакетный менеджер.
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+```bash
+npm i
+npm run dev
+```
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+## Технологии
+В проекте использованы следующие технологии:
+* Vue 3
+* TypeScript
+* Pinia
+* TailwindCSS
+* Vite
+* VTU и Vitest для тестов. К сожалению не хватило времени, чтобы покрыть тестами весь проект.
 
-1. Disable the built-in TypeScript Extension
-   1. Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-   2. Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+## License
+Можете связаться со мной в telegram [https://t.me/artur_webdev](https://t.me/artur_webdev)
