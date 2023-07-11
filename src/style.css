@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --grey: "#696969";
+  --light-grey: "#D9DBDA";
+  --yellow: "#FFD200";
+  --gold: "#FFD300";
+  --corduroy: "#5F7465";
+  --tapa: "#727270";
+}
+
 body {
   font-family: Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
