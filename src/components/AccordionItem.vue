@@ -17,14 +17,28 @@ const handleToggleDetailsButtonClick = () => {
 
 <template>
   <MainRow :user="user" @toggledetailsbuttonclick="handleToggleDetailsButtonClick" />
-  <Transition
-    enter-active-class="duration-300 ease-out"
-    enter-from-class="transform opacity-0 translate-x-full"
-    enter-to-class="opacity-100 translate-x-0"
-    leave-active-class="duration-200 ease-in"
-    leave-from-class="opacity-100 translate-x-0"
-    leave-to-class="transform opacity-0 translate-x-full"
-  >
+  <Transition>
     <DetailsRow v-if="isDetailsVisible" :user="user" />
   </Transition>
 </template>
+
+<style scoped>
+.v-enter-active {
+  transition: all 0.3 ease-out;
+}
+.v-leave-active {
+  transition: all 0.2 ease-in;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+  transform: translateX(100%);
+}
+
+.v-enter-to,
+.v-leave-from {
+  opacity: 1;
+  transform: translateX(0);
+}
+</style>
