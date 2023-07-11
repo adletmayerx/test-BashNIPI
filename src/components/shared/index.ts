@@ -1,4 +1,4 @@
-import LabelVue from "./LabelVue.vue";
 import BlockTitle from "./BlockTitle.vue";
+import LabelVue from "./LabelVue.vue";
 
-export { LabelVue, BlockTitle };
+export { BlockTitle, LabelVue };

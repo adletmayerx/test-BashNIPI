@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import AccordionItem from "./AccordionItem.vue";
+import { AccordionItem } from ".";
 import User from "../types/User";
 
 const HEADINGS = ["Name", "Email", "Phone", "Website"];

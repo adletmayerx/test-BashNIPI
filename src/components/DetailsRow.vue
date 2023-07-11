@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { CheckIcon } from "./icons";
-import Details from "./Details.vue";
-import User from "../types/User";
 import { ref } from "vue";
-import { InputChangeParams } from "./shared/LabelVue.vue";
+import { Details } from ".";
 import { useUsersStore } from "../stores/users";
+import User from "../types/User";
+import { CheckIcon } from "./icons";
+import { InputChangeParams } from "./shared/LabelVue.vue";
 
 type Props = {
   user: User;

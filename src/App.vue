@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import Header from "./components/Header.vue";
-import Accordion from "./components/Accordion.vue";
-import { onBeforeMount } from "vue";
-import { useUsersStore } from "./stores/users";
 import { storeToRefs } from "pinia";
+import { onBeforeMount } from "vue";
+import { Accordion, Header } from "./components";
+import { useUsersStore } from "./stores/users";
 
 const store = useUsersStore();
 const { users } = storeToRefs(store);

@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { DownArrowIcon } from "./icons";
-import User from "../types/User";
-import { ref } from "vue";
 import clsx from "clsx";
+import { ref } from "vue";
+import User from "../types/User";
+import { DownArrowIcon } from "./icons";
 
 type Props = {
   user: User;

@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import DetailsRow from "./DetailsRow.vue";
-import MainRow from "./MainRow.vue";
-import User from "../types/User";
 import { ref } from "vue";
+import { DetailsRow, MainRow } from ".";
+import User from "../types/User";
 
 type Props = {
   user: User;
@@ -14,11 +13,10 @@ const isDetailsVisible = ref(false);
 const handleToggleDetailsButtonClick = () => {
   isDetailsVisible.value = !isDetailsVisible.value;
 };
-
 </script>
 
 <template>
-  <MainRow :user="user" @toggledetailsbuttonclick="handleToggleDetailsButtonClick"   />
+  <MainRow :user="user" @toggledetailsbuttonclick="handleToggleDetailsButtonClick" />
   <Transition
     enter-active-class="duration-300 ease-out"
     enter-from-class="transform opacity-0 translate-x-full"

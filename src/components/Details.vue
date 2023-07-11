@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { LabelVue, BlockTitle } from "./shared";
 import User from "../types/User";
+import { BlockTitle, LabelVue } from "./shared";
 import { type InputChangeParams } from "./shared/LabelVue.vue";
 
 type Props = { user: User; newUserData: User; changedUserData: any };
