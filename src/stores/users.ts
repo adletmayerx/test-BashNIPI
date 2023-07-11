@@ -7,6 +7,8 @@ export const useUsersStore = defineStore("users", () => {
 
   const setUsers = (newUsers: Array<User>) => {
     users.value = newUsers;
+    
+    saveToLocalStorage();
   };
 
   const editUser = (newUserData: User) => {
@@ -14,20 +16,21 @@ export const useUsersStore = defineStore("users", () => {
       return;
     }
 
-    for (let user of users.value) {
+    for (let [i, user] of users.value.entries()) {
       if (newUserData.id !== user.id) {
         continue;
       }
 
-      let key: keyof User;
-
-      for (key in newUserData) {
-        //@ts-ignore
-        user[key] = newUserData[key];
-      }
+      users.value.splice(i, 1, {...structuredClone(newUserData)})
 
       break;
     }
+
+    saveToLocalStorage();
+  };
+
+  const saveToLocalStorage = () => {
+    localStorage.setItem("users", JSON.stringify(users.value));
   };
 
   return { users, setUsers, editUser };
