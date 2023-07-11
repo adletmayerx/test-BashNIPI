@@ -7,12 +7,14 @@ export const useUsersStore = defineStore("users", () => {
 
   const setUsers = (newUsers: Array<User>) => {
     users.value = newUsers;
-    
+
     saveToLocalStorage();
   };
 
   const editUser = (newUserData: User) => {
     if (!users.value.length) {
+      console.error("Массив с пользователями пустой");
+
       return;
     }
 
@@ -21,7 +23,7 @@ export const useUsersStore = defineStore("users", () => {
         continue;
       }
 
-      users.value.splice(i, 1, {...structuredClone(newUserData)})
+      users.value.splice(i, 1, { ...structuredClone(newUserData) });
 
       break;
     }
