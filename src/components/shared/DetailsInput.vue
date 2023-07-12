@@ -31,14 +31,36 @@ const handleInputChange = (e: Event) => {
 </script>
 
 <template>
-  <label class="inline-flex flex-col gap-2">
-    <span class="text-xs opacity-50 capitalize">{{ name }}</span>
-    <input
-      :name="name"
-      type="text"
-      class="border rounded py-2 px-4 text-sm border-light-grey"
-      :value="value"
-      @input="handleInputChange"
-    />
+  <label class="label">
+    <span class="label__text">{{ name }}</span>
+    <input :name="name" type="text" class="label__input" :value="value" @input="handleInputChange" />
   </label>
 </template>
+
+<style scoped>
+@import url(../../assets/styles/variables.css);
+.label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.label__text {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  opacity: 0.5;
+  text-transform: capitalize;
+}
+
+.label__input {
+  border: 1px solid #d9dbda;
+  color: var(--grey);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  border-radius: 0.25rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+</style>

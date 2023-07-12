@@ -34,5 +34,5 @@ onBeforeMount(async () => {
 </template>
 
 <style>
-  @import './assets/styles/variables.css';
+  @import url(./assets/styles/variables.css);
 </style>

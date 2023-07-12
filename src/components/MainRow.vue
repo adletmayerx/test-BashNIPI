@@ -48,6 +48,9 @@ const handleToggleDetailsButtonClick = () => {
 }
 
 .cell__button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
   transition-property: transform;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 300ms;
@@ -58,9 +61,9 @@ const handleToggleDetailsButtonClick = () => {
 }
 
 .row__cell {
-  border-top-width: 1px;
-  border-bottom-width: 1px;
-  border-color: #ffd200;
+  border: #ffd200 solid 1px;
+  border-right-width: 0;
+  border-left-width: 0;
   text-overflow: ellipsis;
   overflow: hidden;
   max-width: 100px;
