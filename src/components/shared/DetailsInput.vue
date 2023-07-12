@@ -101,14 +101,26 @@ const handleInputChange = (e: Event) => {
 
 .label__error {
   position: absolute;
-  top: 70px;
+  top: 65px;
   z-index: 2;
   left: 0;
   border-radius: 4px;
   color: red;
-  background-color: lightgrey;
+  background-color: var(--light-grey);
   opacity: 1;
   padding: 0.5rem;
   font-size: 12px;
+}
+
+.label__error:after { 
+  bottom: 23px;
+  content: ' ';
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: 9px;
+  /* top: -6px; */
+  border: 15px solid;
+  border-color: transparent transparent var(--light-grey);
 }
 </style>

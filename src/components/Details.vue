@@ -73,7 +73,6 @@ const handleInputChange = (params: InputChangeEventParams) => {
   justify-content: flex-start;
   overflow: hidden;
   align-items: normal;
-  padding-bottom: 1rem;
 }
 
 .details__title {
@@ -101,7 +100,7 @@ const handleInputChange = (params: InputChangeEventParams) => {
   border-top: 1px solid var(--light-grey);
   margin: 0;
   padding-top: 1.25rem;
-  padding-bottom: 1.25rem;
+  padding-bottom: 2.5rem;
   padding-left: 2rem;
   padding-right: 2rem;
   overflow: hidden;
