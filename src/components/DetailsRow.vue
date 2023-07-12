@@ -109,4 +109,8 @@ const handleSaveButtonClick = () => {
   border: none;
   cursor: pointer;
 }
+
+.form__submit:disabled {
+  cursor: default;
+}
 </style>
