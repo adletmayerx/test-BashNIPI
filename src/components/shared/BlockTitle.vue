@@ -16,6 +16,7 @@ defineProps<Props>();
 <style scoped>
 .heading {
   font-size: 16px;
+  font-weight: 400;
   margin: 0;
   text-transform: uppercase;
   padding-left: 2rem;
