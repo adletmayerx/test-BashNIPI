@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import User from "../types/User";
-import { BlockTitle, LabelVue } from "./shared";
-import { type InputChangeParams } from "./shared/LabelVue.vue";
+import { BlockTitle, DetailsInput } from "./shared";
+import { type InputChangeParams } from "./shared/DetailsInput.vue";
 
 type Props = { user: User; newUserData: User; changedUserData: any };
 
@@ -26,27 +26,27 @@ const handleInputChange = ({ block, name, value }: InputChangeParams) => {
     </div>
     <div class="details__body">
       <fieldset class="details__fieldset">
-        <LabelVue block="address" name="street" :value="user.address.street" @inputchange="handleInputChange" />
-        <LabelVue block="address" name="suite" :value="user.address.suite" @inputchange="handleInputChange" />
-        <LabelVue block="address" name="city" :value="user.address.city" @inputchange="handleInputChange" />
-        <LabelVue block="address" name="zipcode" :value="user.address.zipcode" @inputchange="handleInputChange" />
+        <DetailsInput block="address" name="street" :value="user.address.street" @inputchange="handleInputChange" />
+        <DetailsInput block="address" name="suite" :value="user.address.suite" @inputchange="handleInputChange" />
+        <DetailsInput block="address" name="city" :value="user.address.city" @inputchange="handleInputChange" />
+        <DetailsInput block="address" name="zipcode" :value="user.address.zipcode" @inputchange="handleInputChange" />
       </fieldset>
       <fieldset class="details__fieldset details__fieldset_border-left">
-        <LabelVue block="company" name="name" :value="user.company.name" @inputchange="handleInputChange" />
-        <LabelVue
+        <DetailsInput block="company" name="name" :value="user.company.name" @inputchange="handleInputChange" />
+        <DetailsInput
           block="company"
           name="catchPhrase"
           :value="user.company.catchPhrase"
           @inputchange="handleInputChange"
         />
-        <LabelVue block="company" name="bs" :value="user.company.bs" @inputchange="handleInputChange" />
+        <DetailsInput block="company" name="bs" :value="user.company.bs" @inputchange="handleInputChange" />
       </fieldset>
       <fieldset class="details__fieldset details__fieldset_border-left">
-        <LabelVue :block="null" name="name" :value="user.name" @inputchange="handleInputChange" />
-        <LabelVue :block="null" name="username" :value="user.username" @inputchange="handleInputChange" />
-        <LabelVue :block="null" name="email" :value="user.email" @inputchange="handleInputChange" />
-        <LabelVue :block="null" name="phone" :value="user.phone" @inputchange="handleInputChange" />
-        <LabelVue :block="null" name="website" :value="user.website" @inputchange="handleInputChange" />
+        <DetailsInput :block="null" name="name" :value="user.name" @inputchange="handleInputChange" />
+        <DetailsInput :block="null" name="username" :value="user.username" @inputchange="handleInputChange" />
+        <DetailsInput :block="null" name="email" :value="user.email" @inputchange="handleInputChange" />
+        <DetailsInput :block="null" name="phone" :value="user.phone" @inputchange="handleInputChange" />
+        <DetailsInput :block="null" name="website" :value="user.website" @inputchange="handleInputChange" />
       </fieldset>
     </div>
   </div>
