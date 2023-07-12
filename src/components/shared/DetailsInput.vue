@@ -16,7 +16,7 @@ export type InputChangeParamsCompany = {
 };
 export type InputChangeParams = InputChangeParamsBasic | InputChangeParamsCompany | InputChangeParamsAddress;
 
-const { block, name, value } = defineProps<InputChangeParams>();
+const { block, name, value, inputType = "text" } = defineProps<InputChangeParams & {inputType?: 'text' | "number" | "email" | "url"}>();
 
 const emit = defineEmits<{
   (e: "inputchange", params: InputChangeParams): void;
@@ -33,7 +33,7 @@ const handleInputChange = (e: Event) => {
 <template>
   <label class="label">
     <span class="label__text">{{ name }}</span>
-    <input :name="name" type="text" class="label__input" :value="value" @input="handleInputChange" />
+    <input :name="name" :type="inputType" class="label__input" :value="value" @input="handleInputChange" minlength="2" maxlength="32"  />
   </label>
 </template>
 
