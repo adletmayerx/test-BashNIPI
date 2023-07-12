@@ -61,7 +61,7 @@ const handleToggleDetailsButtonClick = () => {
 }
 
 .row__cell {
-  border: #ffd200 solid 1px;
+  border: var(--yellow) solid 1px;
   border-right-width: 0;
   border-left-width: 0;
   text-overflow: ellipsis;
@@ -72,7 +72,7 @@ const handleToggleDetailsButtonClick = () => {
 }
 
 .row__side-cell {
-  border: #ffd200 solid 1px;
+  border: var(--yellow) solid 1px;
 }
 
 .row__side-cell_left {

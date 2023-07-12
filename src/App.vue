@@ -32,7 +32,3 @@ onBeforeMount(async () => {
   <Header />
   <Accordion v-if="users.length" :users="users" />
 </template>
-
-<style>
-  @import url(./assets/styles/variables.css);
-</style>

@@ -62,7 +62,7 @@ const handleInputChange = ({ block, name, value }: InputChangeParams) => {
 .details__header {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  border: 1px solid #d9dbda;
+  border: 1px solid var(--light-grey);
   border-top-left-radius: 0.25rem;
   border-top-right-radius: 0.25rem;
 }
@@ -70,14 +70,14 @@ const handleInputChange = ({ block, name, value }: InputChangeParams) => {
 .details__title {
   border-left-width: 1px;
   border-left-style: solid;
-  border-left-color: #d9dbda;
+  border-left-color: var(--light-grey);
 }
 
 .details__body {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   overflow: hidden;
-  border: 1px solid #d9dbda;
+  border: 1px solid var(--light-grey);
   border-bottom-right-radius: 0.25rem;
   border-bottom-left-radius: 0.25rem;
 }
@@ -86,6 +86,8 @@ const handleInputChange = ({ block, name, value }: InputChangeParams) => {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
+  border: none;
+  margin: 0;
   padding-top: 1.25rem;
   padding-bottom: 1.25rem;
   padding-left: 2rem;
@@ -97,6 +99,6 @@ const handleInputChange = ({ block, name, value }: InputChangeParams) => {
 .details__fieldset_border-left {
   border-left-width: 1px;
   border-left-style: solid;
-  border-left-color: #d9dbda;
+  border-left-color: var(--light-grey);
 }
 </style>

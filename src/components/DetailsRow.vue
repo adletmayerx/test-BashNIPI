@@ -4,7 +4,7 @@ import { Details } from ".";
 import { useUsersStore } from "../stores/users";
 import User from "../types/User";
 import { CheckIcon } from "./icons";
-import { InputChangeParams } from "./shared/LabelVue.vue";
+import { InputChangeParams } from "./shared/DetailsInput.vue";
 
 type Props = {
   user: User;
@@ -68,7 +68,7 @@ const handleSaveButtonClick = () => {
           :changedUserData="changedUserData"
           @inputchange="onInputChange"
         ></Details>
-        <button type="submit" :disabled="isSaveButtonDisabled" title="Сохранить изменения">
+        <button type="submit" :disabled="isSaveButtonDisabled" title="Сохранить изменения" class="form__submit">
           <CheckIcon :isDisabled="isSaveButtonDisabled" />
         </button>
       </form>
@@ -90,5 +90,11 @@ const handleSaveButtonClick = () => {
   padding-left: 2.25rem;
   padding-right: 2.25rem;
   gap: 0.75rem;
+}
+
+.form__submit {
+  background: transparent;
+  border: none;
+  cursor: pointer;
 }
 </style>

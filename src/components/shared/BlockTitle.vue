@@ -10,11 +10,13 @@ defineProps<Props>();
 </script>
 
 <template>
-  <h2 :class="clsx('heading ', [className && className])">{{ title }}</h2>
+  <h2 :class="clsx('heading', [className && className])">{{ title }}</h2>
 </template>
 
 <style scoped>
 .heading {
+  font-size: 16px;
+  margin: 0;
   text-transform: uppercase;
   padding-left: 2rem;
   padding-right: 2rem;
@@ -22,6 +24,6 @@ defineProps<Props>();
   padding-bottom: 0.5rem;
   text-overflow: ellipsis;
   overflow: hidden;
-  color: var(--grey);
+  color: #696966;
 }
 </style>
