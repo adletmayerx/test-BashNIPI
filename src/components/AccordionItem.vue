@@ -16,7 +16,11 @@ const handleToggleDetailsButtonClick = () => {
 </script>
 
 <template>
-  <MainRow :user="user" @toggledetailsbuttonclick="handleToggleDetailsButtonClick" />
+  <MainRow
+    :user="user"
+    @toggledetailsbuttonclick="handleToggleDetailsButtonClick"
+    :isDetailsVisible="isDetailsVisible"
+  />
   <Transition>
     <DetailsRow v-if="isDetailsVisible" :user="user" />
   </Transition>
