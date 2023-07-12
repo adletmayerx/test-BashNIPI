@@ -17,56 +17,54 @@ const handleInputChange = (params: InputChangeEventParams) => {
 
 <template>
   <div class="details">
-    <div class="details__header">
-      <div class="details__block">
-        <BlockTitle title="address" />
-        <div class="details__fieldset">
-          <DetailsInput block="address" name="street" :value="user.address.street" @inputchange="handleInputChange" />
-          <DetailsInput block="address" name="suite" :value="user.address.suite" @inputchange="handleInputChange" />
-          <DetailsInput block="address" name="city" :value="user.address.city" @inputchange="handleInputChange" />
-          <DetailsInput block="address" name="zipcode" :value="user.address.zipcode" @inputchange="handleInputChange" />
-        </div>
-      </div>
-      <div class="details__block">
-        <BlockTitle title="company" className="details__title" />
-        <div class="details__fieldset details__fieldset_border-left">
-          <DetailsInput block="company" name="name" :value="user.company.name" @inputchange="handleInputChange" />
-          <DetailsInput
-            block="company"
-            name="catchPhrase"
-            :value="user.company.catchPhrase"
-            @inputchange="handleInputChange"
-          />
-          <DetailsInput block="company" name="bs" :value="user.company.bs" @inputchange="handleInputChange" />
-        </div>
-      </div>
-      <div class="details__block">
-        <BlockTitle title="basic info" className="details__title" />
-        <div class="details__fieldset details__fieldset_border-left">
-          <DetailsInput :block="null" name="name" :value="user.name" @inputchange="handleInputChange" />
-          <DetailsInput :block="null" name="username" :value="user.username" @inputchange="handleInputChange" />
-          <DetailsInput :block="null" name="email" :value="user.email" @inputchange="handleInputChange" />
-          <DetailsInput :block="null" name="phone" :value="user.phone" @inputchange="handleInputChange" />
-          <DetailsInput :block="null" name="website" :value="user.website" @inputchange="handleInputChange" />
-        </div>
-      </div>
+    <div class="details__block">
+      <BlockTitle title="address" />
+      <fieldset class="details__fieldset">
+        <DetailsInput block="address" name="street" :value="user.address.street" @inputchange="handleInputChange" />
+        <DetailsInput block="address" name="suite" :value="user.address.suite" @inputchange="handleInputChange" />
+        <DetailsInput block="address" name="city" :value="user.address.city" @inputchange="handleInputChange" />
+        <DetailsInput block="address" name="zipcode" :value="user.address.zipcode" @inputchange="handleInputChange" />
+      </fieldset>
+    </div>
+    <div class="details__block details__block_border-left">
+      <BlockTitle title="company" className="" />
+      <fieldset class="details__fieldset">
+        <DetailsInput block="company" name="name" :value="user.company.name" @inputchange="handleInputChange" />
+        <DetailsInput
+          block="company"
+          name="catchPhrase"
+          :value="user.company.catchPhrase"
+          @inputchange="handleInputChange"
+        />
+        <DetailsInput block="company" name="bs" :value="user.company.bs" @inputchange="handleInputChange" />
+      </fieldset>
+    </div>
+    <div class="details__block details__block_border-left">
+      <BlockTitle title="basic info" className="" />
+      <fieldset class="details__fieldset">
+        <DetailsInput :block="null" name="name" :value="user.name" @inputchange="handleInputChange" />
+        <DetailsInput :block="null" name="username" :value="user.username" @inputchange="handleInputChange" />
+        <DetailsInput
+          :block="null"
+          name="email"
+          :value="user.email"
+          @inputchange="handleInputChange"
+          inputType="email"
+        />
+        <DetailsInput :block="null" name="phone" :value="user.phone" @inputchange="handleInputChange" />
+        <DetailsInput :block="null" name="website" :value="user.website" @inputchange="handleInputChange" />
+      </fieldset>
     </div>
   </div>
 </template>
 
 <style scoped>
 .details {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-}
-
-.details__header {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   border: 1px solid var(--light-grey);
-  border-top-left-radius: 0.25rem;
-  border-top-right-radius: 0.25rem;
+  border-radius: 0.25rem;
+  flex-grow: 1;
 }
 
 .details__block {
@@ -74,7 +72,8 @@ const handleInputChange = (params: InputChangeEventParams) => {
   flex-direction: column;
   justify-content: flex-start;
   overflow: hidden;
-  align-items:normal;
+  align-items: normal;
+  padding-bottom: 1rem;
 }
 
 .details__title {
@@ -109,7 +108,7 @@ const handleInputChange = (params: InputChangeEventParams) => {
   background-color: white;
 }
 
-.details__fieldset_border-left {
+.details__block_border-left {
   border-left-width: 1px;
   border-left-style: solid;
   border-left-color: var(--light-grey);
