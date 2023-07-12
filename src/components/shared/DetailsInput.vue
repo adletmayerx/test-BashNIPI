@@ -43,6 +43,8 @@ const handleInputChange = (e: Event) => {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  justify-content: flex-start;
+  width: 100%;
 }
 
 .label__text {
@@ -62,5 +64,7 @@ const handleInputChange = (e: Event) => {
   padding-bottom: 0.5rem;
   padding-left: 1rem;
   padding-right: 1rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 </style>

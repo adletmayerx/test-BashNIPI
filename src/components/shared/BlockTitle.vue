@@ -21,10 +21,11 @@ defineProps<Props>();
   text-transform: uppercase;
   padding-left: 2rem;
   padding-right: 2rem;
-  padding-top: 0.5rem;
+  padding-top: 1rem;
   padding-bottom: 0.5rem;
   text-overflow: ellipsis;
   overflow: hidden;
   color: #696966;
+  white-space: nowrap;
 }
 </style>
