@@ -18,20 +18,20 @@ const handleInputChange = ({ block, name, value }: InputChangeParams) => {
 </script>
 
 <template>
-  <div class="flex flex-col text-grey grow">
-    <div class="grid grid-cols-3 border rounded-t">
+  <div class="details">
+    <div class="details__header">
       <BlockTitle title="address" />
-      <BlockTitle title="company" className="border-l border-light-grey" />
-      <BlockTitle title="basic info" className="border-l border-light-grey" />
+      <BlockTitle title="company" className="details__title" />
+      <BlockTitle title="basic info" className="details__title" />
     </div>
-    <div class="grid grid-cols-3 border border-light-grey rounded-b overflow-hidden">
-      <fieldset class="flex flex-col gap-3 py-5 px-8 overflow-hidden bg-white">
+    <div class="details__body">
+      <fieldset class="details__fieldset">
         <LabelVue block="address" name="street" :value="user.address.street" @inputchange="handleInputChange" />
         <LabelVue block="address" name="suite" :value="user.address.suite" @inputchange="handleInputChange" />
         <LabelVue block="address" name="city" :value="user.address.city" @inputchange="handleInputChange" />
         <LabelVue block="address" name="zipcode" :value="user.address.zipcode" @inputchange="handleInputChange" />
       </fieldset>
-      <fieldset class="flex flex-col gap-3 py-5 px-8 border-l border-light-grey overflow-hidden bg-white">
+      <fieldset class="details__fieldset details__fieldset_border-left">
         <LabelVue block="company" name="name" :value="user.company.name" @inputchange="handleInputChange" />
         <LabelVue
           block="company"
@@ -41,7 +41,7 @@ const handleInputChange = ({ block, name, value }: InputChangeParams) => {
         />
         <LabelVue block="company" name="bs" :value="user.company.bs" @inputchange="handleInputChange" />
       </fieldset>
-      <fieldset class="flex flex-col gap-3 py-5 px-8 border-l border-light-grey overflow-hidden bg-white">
+      <fieldset class="details__fieldset details__fieldset_border-left">
         <LabelVue :block="null" name="name" :value="user.name" @inputchange="handleInputChange" />
         <LabelVue :block="null" name="username" :value="user.username" @inputchange="handleInputChange" />
         <LabelVue :block="null" name="email" :value="user.email" @inputchange="handleInputChange" />
@@ -51,3 +51,52 @@ const handleInputChange = ({ block, name, value }: InputChangeParams) => {
     </div>
   </div>
 </template>
+
+<style scoped>
+.details {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.details__header {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border: 1px solid #d9dbda;
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+}
+
+.details__title {
+  border-left-width: 1px;
+  border-left-style: solid;
+  border-left-color: #d9dbda;
+}
+
+.details__body {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  overflow: hidden;
+  border: 1px solid #d9dbda;
+  border-bottom-right-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+}
+
+.details__fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  overflow: hidden;
+  background-color: white;
+}
+
+.details__fieldset_border-left {
+  border-left-width: 1px;
+  border-left-style: solid;
+  border-left-color: #d9dbda;
+}
+</style>
