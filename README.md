@@ -22,7 +22,6 @@ npm run dev
 * Vue 3
 * TypeScript
 * Pinia
-* TailwindCSS
 * Vite
 * VTU и Vitest для тестов. К сожалению не хватило времени, чтобы покрыть тестами весь проект.
 
