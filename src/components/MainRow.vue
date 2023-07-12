@@ -66,9 +66,10 @@ const handleToggleDetailsButtonClick = () => {
   border-left-width: 0;
   text-overflow: ellipsis;
   overflow: hidden;
-  max-width: 100px;
+  max-width: 60px;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
+  white-space: nowrap;
 }
 
 .row__side-cell {
