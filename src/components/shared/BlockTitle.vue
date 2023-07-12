@@ -10,5 +10,18 @@ defineProps<Props>();
 </script>
 
 <template>
-  <h2 :class="clsx('uppercase px-8 py-2 text-ellipsis overflow-hidden ', [className && className])">{{ title }}</h2>
+  <h2 :class="clsx('heading ', [className && className])">{{ title }}</h2>
 </template>
+
+<style scoped>
+.heading {
+  text-transform: uppercase;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  color: var(--grey);
+}
+</style>
