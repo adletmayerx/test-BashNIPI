@@ -12,9 +12,6 @@ type Props = {
 
 const { user } = defineProps<Props>();
 const { editUser } = useUsersStore();
-// const emit = defineEmits<{
-//   (e: "edituser", newUserData: User): void;
-// }>();
 
 const isSaveButtonDisabled = ref(true);
 const newUserData: User = JSON.parse(JSON.stringify(user));
@@ -62,9 +59,9 @@ const handleSaveButtonClick = () => {
 </script>
 
 <template>
-  <tr class="bg-white relative">
+  <tr class="row">
     <td colspan="6">
-      <form class="flex items-start py-1 px-9 gap-3" @submit.prevent="handleSaveButtonClick">
+      <form class="form" @submit.prevent="handleSaveButtonClick">
         <Details
           :user="user"
           :newUserData="newUserData"
@@ -78,3 +75,20 @@ const handleSaveButtonClick = () => {
     </td>
   </tr>
 </template>
+
+<style scoped>
+.row {
+  background-color: white;
+  position: relative;
+}
+
+.form {
+  display: flex;
+  align-items: flex-start;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  padding-left: 2.25rem;
+  padding-right: 2.25rem;
+  gap: 0.75rem;
+}
+</style>
