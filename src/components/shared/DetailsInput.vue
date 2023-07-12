@@ -118,8 +118,7 @@ const handleInputChange = (e: Event) => {
   position: absolute;
   width: 0;
   height: 0;
-  left: 9px;
-  /* top: -6px; */
+  left: 10px;
   border: 15px solid;
   border-color: transparent transparent var(--light-grey);
 }
