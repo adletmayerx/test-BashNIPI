@@ -1,18 +1,16 @@
 <script setup lang="ts">
 import User from "../types/User";
 import { BlockTitle, DetailsInput } from "./shared";
-import { type InputChangeParams } from "./shared/DetailsInput.vue";
+import { type InputChangeEventParams } from "./shared/DetailsInput.vue";
 
 type Props = { user: User; newUserData: User; changedUserData: any };
 
 const { user } = defineProps<Props>();
 const emit = defineEmits<{
-  (e: "inputchange", params: InputChangeParams): void;
+  (e: "inputchange", params: InputChangeEventParams): void;
 }>();
 
-const handleInputChange = ({ block, name, value }: InputChangeParams) => {
-  const params: InputChangeParams = { block, name, value } as InputChangeParams;
-
+const handleInputChange = (params: InputChangeEventParams) => {
   emit("inputchange", params);
 };
 </script>
@@ -22,16 +20,16 @@ const handleInputChange = ({ block, name, value }: InputChangeParams) => {
     <div class="details__header">
       <div class="details__block">
         <BlockTitle title="address" />
-        <fieldset class="details__fieldset">
+        <div class="details__fieldset">
           <DetailsInput block="address" name="street" :value="user.address.street" @inputchange="handleInputChange" />
           <DetailsInput block="address" name="suite" :value="user.address.suite" @inputchange="handleInputChange" />
           <DetailsInput block="address" name="city" :value="user.address.city" @inputchange="handleInputChange" />
           <DetailsInput block="address" name="zipcode" :value="user.address.zipcode" @inputchange="handleInputChange" />
-        </fieldset>
+        </div>
       </div>
       <div class="details__block">
         <BlockTitle title="company" className="details__title" />
-        <fieldset class="details__fieldset details__fieldset_border-left">
+        <div class="details__fieldset details__fieldset_border-left">
           <DetailsInput block="company" name="name" :value="user.company.name" @inputchange="handleInputChange" />
           <DetailsInput
             block="company"
@@ -40,17 +38,17 @@ const handleInputChange = ({ block, name, value }: InputChangeParams) => {
             @inputchange="handleInputChange"
           />
           <DetailsInput block="company" name="bs" :value="user.company.bs" @inputchange="handleInputChange" />
-        </fieldset>
+        </div>
       </div>
       <div class="details__block">
         <BlockTitle title="basic info" className="details__title" />
-        <fieldset class="details__fieldset details__fieldset_border-left">
+        <div class="details__fieldset details__fieldset_border-left">
           <DetailsInput :block="null" name="name" :value="user.name" @inputchange="handleInputChange" />
           <DetailsInput :block="null" name="username" :value="user.username" @inputchange="handleInputChange" />
           <DetailsInput :block="null" name="email" :value="user.email" @inputchange="handleInputChange" />
           <DetailsInput :block="null" name="phone" :value="user.phone" @inputchange="handleInputChange" />
           <DetailsInput :block="null" name="website" :value="user.website" @inputchange="handleInputChange" />
-        </fieldset>
+        </div>
       </div>
     </div>
   </div>

@@ -4,7 +4,7 @@ import { Details } from ".";
 import { useUsersStore } from "../stores/users";
 import User from "../types/User";
 import { CheckIcon } from "./icons";
-import { InputChangeParams } from "./shared/DetailsInput.vue";
+import { InputChangeEventParams } from "./shared/DetailsInput.vue";
 
 type Props = {
   user: User;
@@ -16,8 +16,9 @@ const { editUser } = useUsersStore();
 const isSaveButtonDisabled = ref(true);
 const newUserData: User = JSON.parse(JSON.stringify(user));
 let changedUserData: any = {};
+let inputsValidity: Map<string, boolean> = new Map();
 
-const onInputChange = ({ name, value, block }: InputChangeParams) => {
+const onInputChange = ({ name, value, block, isValid }: InputChangeEventParams) => {
   switch (block) {
     case "address":
       if (!changedUserData[block]) {
@@ -44,7 +45,18 @@ const onInputChange = ({ name, value, block }: InputChangeParams) => {
       break;
   }
 
-  isSaveButtonDisabled.value = false;
+  inputsValidity.set(name, isValid);
+
+  let isFormValid = true;
+
+  for (let entry of inputsValidity) {
+    if (entry[1] === false) {
+      isFormValid = false;
+      break;
+    }
+  }
+
+  isSaveButtonDisabled.value = !isFormValid;
 };
 
 const handleSaveButtonClick = () => {
@@ -61,7 +73,7 @@ const handleSaveButtonClick = () => {
 <template>
   <tr class="row">
     <td colspan="6">
-      <form class="form" @submit.prevent="handleSaveButtonClick">
+      <form class="form" @submit.prevent="handleSaveButtonClick" name="form" action="">
         <Details
           :user="user"
           :newUserData="newUserData"

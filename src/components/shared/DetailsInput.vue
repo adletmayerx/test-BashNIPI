@@ -1,30 +1,45 @@
 <script setup lang="ts">
-type InputChangeParamsBasic = {
+import { ref } from "vue";
+
+type InputPropsBasic = {
   block: null;
   name: "name" | "username" | "email" | "phone" | "website";
   value: string;
 };
-type InputChangeParamsAddress = {
+type InputPropsAddress = {
   block: "address";
   name: "street" | "suite" | "city" | "zipcode";
   value: string;
 };
-export type InputChangeParamsCompany = {
+type InputPropsCompany = {
   block: "company";
   name: "name" | "catchPhrase" | "bs";
   value: string;
 };
-export type InputChangeParams = InputChangeParamsBasic | InputChangeParamsCompany | InputChangeParamsAddress;
+type Props = (InputPropsBasic | InputPropsCompany | InputPropsAddress) & {
+  inputType?: "text" | "number" | "email" | "url";
+};
 
-const { block, name, value, inputType = "text" } = defineProps<InputChangeParams & {inputType?: 'text' | "number" | "email" | "url"}>();
+export type InputChangeEventParams = (InputPropsBasic | InputPropsCompany | InputPropsAddress) & { isValid: boolean };
+
+const { block, name, value, inputType = "text" } = defineProps<Props>();
+const error = ref("");
+const inputValue = ref(value);
 
 const emit = defineEmits<{
-  (e: "inputchange", params: InputChangeParams): void;
+  (e: "inputchange", params: InputChangeEventParams): void;
 }>();
 
 const handleInputChange = (e: Event) => {
   const input = e.target as HTMLInputElement;
-  const params: InputChangeParams = { block, name, value: input.value } as InputChangeParams;
+  const params: InputChangeEventParams = {
+    block,
+    name,
+    value: inputValue.value,
+    isValid: input.validity.valid,
+  } as InputChangeEventParams;
+
+  error.value = input.validationMessage ?? "";
 
   emit("inputchange", params);
 };
@@ -33,7 +48,18 @@ const handleInputChange = (e: Event) => {
 <template>
   <label class="label">
     <span class="label__text">{{ name }}</span>
-    <input :name="name" :type="inputType" class="label__input" :value="value" @input="handleInputChange" minlength="2" maxlength="32"  />
+    <input
+      :name="name"
+      :placeholder="name"
+      :type="inputType"
+      class="label__input"
+      v-model="inputValue"
+      @input="handleInputChange"
+      minlength="2"
+      maxlength="32"
+      required
+    />
+    <span v-if="error" class="label__error">{{ error }}</span>
   </label>
 </template>
 
@@ -45,6 +71,7 @@ const handleInputChange = (e: Event) => {
   gap: 0.5rem;
   justify-content: flex-start;
   width: 100%;
+  position: relative;
 }
 
 .label__text {
@@ -66,5 +93,22 @@ const handleInputChange = (e: Event) => {
   padding-right: 1rem;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.label__input:invalid {
+  border-color: red;
+}
+
+.label__error {
+  position: absolute;
+  top: 70px;
+  z-index: 2;
+  left: 0;
+  border-radius: 4px;
+  color: red;
+  background-color: lightgrey;
+  opacity: 1;
+  padding: 0.5rem;
+  font-size: 12px;
 }
 </style>
