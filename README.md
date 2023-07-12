@@ -25,5 +25,5 @@ npm run dev
 * Vite
 * VTU и Vitest для тестов. К сожалению не хватило времени, чтобы покрыть тестами весь проект.
 
-## License
+## Контакты
 Можете связаться со мной в telegram [https://t.me/artur_webdev](https://t.me/artur_webdev)
