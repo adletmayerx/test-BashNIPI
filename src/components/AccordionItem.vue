@@ -22,16 +22,16 @@ const handleToggleDetailsButtonClick = () => {
     :isDetailsVisible="isDetailsVisible"
   />
   <Transition>
-    <DetailsRow v-if="isDetailsVisible" :user="user" />
+    <DetailsRow v-show="isDetailsVisible" :user="user" />
   </Transition>
 </template>
 
 <style scoped>
 .v-enter-active {
-  transition: all 0.3 ease-out;
+  transition: all 0.3s ease-out;
 }
 .v-leave-active {
-  transition: all 0.2 ease-in;
+  transition: all 0.2s ease-in;
 }
 
 .v-enter-from,
